@@ -1,0 +1,47 @@
+//  sprites with padding
+$general: sprite-map("sprite-general/*.png", $spacing: 10px, $layout: smart)
+$svg:     sprite-map("sprite-svg/png/*.png", $spacing: 10px, $layout: smart)
+
+@function parseInt($n)
+    @return $n / ($n * 0 + 1)
+
+// sized sprites
+=image-size($path)
+    width: (parseInt(image-width($path)) / 10) + rem
+    height: (parseInt(image-height($path)) / 10) + rem
+
+=sized-sprite($map, $sprite)
+    background: sprite($map, $sprite) no-repeat
+    @include image-size(sprite-file($map, $sprite))
+
+//shortcut
+=s($sprite, $map: $general)
+    background: sprite($map, $sprite) no-repeat
+    //background-image: inline-image('icons/'+$sprite+'.png','image/png'); to switches sprites to base64, elegant
+    @include image-size(sprite-file($map, $sprite))
+
+=svg($sprite, $map: $svg)
+    +s($sprite, $map)
+    .inlinesvg &
+        background: inline-image('sprite-svg/' + $sprite + '.svg') no-repeat
+
+//only image, when dimensions are useless
+=si($sprite, $map: $general)
+    background: sprite($map, $sprite) no-repeat
+
+=svgi($sprite, $map: $svg)
+    +si($sprite, $map)
+    .inlinesvg &
+        background: inline-image('sprite-svg/' + $sprite + '.svg') no-repeat
+
+// Shortcuts for pseudo elements
+
+@mixin ps($name)
+    content: ''
+    position: absolute
+    @include s($name)
+
+@mixin psvg($name)
+    content: ''
+    position: absolute
+    @include svg($name)

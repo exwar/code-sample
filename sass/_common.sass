@@ -1,0 +1,52 @@
+/* ------ Common ------ */
+
+BODY
+    font: 1.6rem/1 $fMR
+    color: $cText
+    background-color: $cBG
+    font-smoothing: antialiased
+
+::selection
+    background-color: $cBlueL
+    color: #FFF
+
+A
+    color: inherit
+    text-decoration: none
+    transition: color $tEffect
+
+    &[href^=tel]
+        color: inherit
+
+.madein
+
+    &__link
+        position: relative
+        display: inline-block
+        padding-right: 3.1rem
+
+        &:before,
+        &:after
+            content: ''
+            position: absolute
+            border-radius: 50%
+
+        &:before
+            top: -.4rem
+            right: 0
+            width: 1.9rem
+            height: 1.9rem
+            background: $cBlueL
+            transition: background $tEffect
+
+        &:after
+            top: -.1rem
+            right: .3rem
+            width: 1.3rem
+            height: 1.3rem
+            background-color: #fff
+
+        &:hover
+            &:before
+                background: $cBlueD
+

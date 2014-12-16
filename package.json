@@ -1,0 +1,29 @@
+{
+  "name": "Milk",
+  "version": "0.1.0",
+  "author": "Stanislav Nekrasov",
+  "email": "to@exwar.com",
+  "private": true,
+
+  "devDependencies": {
+    "grunt":                        "~0.4.1",
+    "matchdep":                     "*",
+
+    "grunt-htmlhint":               "*",
+
+    "grunt-contrib-compass":        "*",
+    "grunt-autoprefixer":           "*",
+    "grunt-modernizr":              "*",
+    "grunt-css-mqpacker":           "*",
+    "grunt-csso":                   "*",
+
+    "grunt-contrib-imagemin":       "*",
+
+    "grunt-contrib-concat":         "*",
+    "grunt-contrib-uglify":         "*",
+
+    "grunt-newer":                  "*",
+    "grunt-contrib-watch":          "*",
+    "grunt-browser-sync":           "*"
+  }
+}

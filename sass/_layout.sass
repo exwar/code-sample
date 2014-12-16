@@ -1,0 +1,129 @@
+// Default layout
+
+HTML
+    font-size: 62.5%
+
+HTML,
+BODY
+    height: 100%
+
+.l-section
+    min-height: 100%
+    min-width: 100rem
+    margin: 0 0 -#{$sFooterHeight}
+
+.l-header
+    padding-top: 2.7rem
+    @extend %sr
+
+    .h-logo
+        +rs(0)
+        +s(logo)
+
+    .h-nav
+        +rs(0)
+        margin: 2.7rem 0 0 4.5rem
+        transition: margin $tLayout
+
+        +min-screen($mqMiddle)
+            margin-left: 8.2rem
+
+        +min-screen($mqWide)
+            margin-left: 11.5rem
+
+
+
+        &__level
+
+            &._top
+
+            &._sub
+                margin-top: 1.9rem
+
+.h-nav-top
+
+    &__item
+        +rs(1.5)
+        font-size: 1.5rem
+        font-family: $fMBi
+        transition: margin $tLayout
+
+        & + &
+            margin-left: 5.9rem
+
+            +min-screen($mqMiddle)
+                margin-left: 8.3rem
+
+            +min-screen($mqWide)
+                margin-left: 12.1rem
+
+    &__link
+        &._active
+            color: $cBlueL
+
+        &:hover
+            color: $cGrey
+
+.h-nav-sub
+    position: relative
+    border-top: .1rem solid #d8dfe5
+    padding-top: 1.5rem
+
+    &:before
+        top: -1.1rem
+        left: 3.5rem
+        +ps(head-nav-pip)
+
+
+    &__item
+        +rs(1.5)
+        transition: margin $tLayout
+
+        & + &
+            margin-left: 2rem
+
+            +min-screen($mqMiddle)
+                margin-left: 3.8rem
+
+            +min-screen($mqWide)
+                margin-left: 6.7rem
+
+
+    &__link
+        &._active
+            color: $cBlueL
+
+        &:hover
+            color: $cGrey
+
+
+
+.l-main
+
+.l-push
+    height: $sFooterHeight
+
+.l-nrw
+    width: 86rem
+    margin: 0 auto
+    transition: width $tLayout
+
+    +min-screen($mqMiddle)
+        width: 104rem
+
+    +min-screen($mqWide)
+        width: 130rem
+
+.l-footer
+    height: $sFooterHeight
+    background: #FFF
+    box-sizing: border-box
+    padding-top: 2.4rem
+    font-size: 1.4rem
+    @extend %cf
+
+    .f-copy
+        float: left
+
+    .f-madein
+        float: right

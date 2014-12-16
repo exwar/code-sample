@@ -1,0 +1,42 @@
+// Fonts
+
+@font-face {
+    font-family: 'Tatiana';
+    src: font-url('tatiana.woff2') format('woff2'),
+         font-url('tatiana.woff') format('woff'),
+         font-url('tatiana.ttf') format('truetype'),
+         font-url('tatiana.svg#TatianaCRegular') format('svg');
+    }
+
+@font-face {
+    font-family: 'MyriadPro Regular';
+    src: font-url('myriadpro-regular.woff2') format('woff2'),
+         font-url('myriadpro-regular.woff') format('woff'),
+         font-url('myriadpro-regular.ttf') format('truetype'),
+         font-url('myriadpro-regular.svg#myriadpro-regular') format('svg');
+    }
+
+@font-face {
+    font-family: 'MyriadPro Bold';
+    src: font-url('myriadpro-bold.woff2') format('woff2'),
+         font-url('myriadpro-bold.woff') format('woff'),
+         font-url('myriadpro-bold.ttf') format('truetype'),
+         font-url('myriadpro-bold.svg#myriadpro-bold') format('svg');
+    }
+
+@font-face {
+    font-family: 'MyriadPro Semibold';
+    src: font-url('myriadpro-semibold.woff2') format('woff2'),
+         font-url('myriadpro-semibold.woff') format('woff'),
+         font-url('myriadpro-semibold.ttf') format('truetype'),
+         font-url('myriadpro-semibold.svg#myriadpro-semibold') format('svg');
+    }
+
+@font-face {
+    font-family: 'MyriadPro Bold Italic';
+    src: font-url('myriadpro-boldit.woff2') format('woff2'),
+         font-url('myriadpro-boldit.woff') format('woff'),
+         font-url('myriadpro-boldit.ttf') format('truetype'),
+         font-url('myriadpro-boldit.svg#myriadpro-boldit') format('svg');
+    }
+

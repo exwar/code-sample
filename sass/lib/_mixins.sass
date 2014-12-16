@@ -1,0 +1,24 @@
+// Image replace
+%ir
+    color: transparent
+    font: 0/0 a
+
+// Clearfix
+%cf
+    &:before,
+    &:after
+        display: table
+        content: ""
+
+    &:after
+        clear: both
+
+// Space reset. Used with +rs() mixin
+// Convinient way for inline blocks layouts
+%sr
+    font-size: 0
+
+=rs($fz: 1.6, $va: top)
+    display: inline-block
+    vertical-align: $va
+    font-size: $fz+rem
