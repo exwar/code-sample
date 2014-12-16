@@ -7,9 +7,9 @@
 <body>
     <h1>Список страниц</h1>
     <ul>
-    <? foreach (glob('./*.html') as $file) { ?>
-        <li><a href="<?=basename($file)?>"><?=basename($file)?></a></li>
-    <? } ?>
+        <? foreach (glob('./*.html') as $file) { ?>
+            <li><a href="<?=basename($file)?>"><?=basename($file)?></a></li>
+        <? } ?>
     </ul>
 </body>
 </html>
