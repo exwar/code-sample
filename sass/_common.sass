@@ -50,3 +50,57 @@ A
             &:before
                 background: $cBlueD
 
+.desc-box
+    position: relative
+    top: 0
+    transition: top $tLayout
+
+    &__title
+        font-family: $fTT
+        font-size: 4rem
+        line-height: 1.25
+        margin-bottom: 3.8rem
+        margin-left: .2rem
+
+        EM
+            color: $cBlueL
+
+    &__body
+        font-family: $fMR
+        font-size: 1.6rem
+        line-height: 1.875
+
+    &__more
+        margin-top: 3.2rem
+
+.paint-link
+    position: relative
+    font-size: 2rem
+    line-height: 1
+    font-family: $fTT
+
+    &:after
+        opacity: 1
+        transition: opacity $tEffect
+
+    &:hover
+        &:after
+            opacity: 0
+
+    &._prod
+        &:after
+            top: 100%
+            margin: .3rem 0 0
+            left: -.2rem
+            +ps(plink-prod)
+
+.start-table
+    &__layer
+        position: relative !important
+
+    &__image
+        width: 43rem
+        display: inline-block
+        vertical-align: top
+        transition: width $tLayout
+

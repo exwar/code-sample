@@ -52,7 +52,7 @@ module.exports = function(grunt){
                     domprefixes: true
                 },
 
-                tests: ['csstransforms', 'csstransforms3d', 'csstransitions', 'inlinesvg', 'touch']
+                tests: ['csstransforms', 'csstransforms3d', 'csstransitions', 'inlinesvg', 'touch', 'flexbox']
             }
         },
 
