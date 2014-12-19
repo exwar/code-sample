@@ -46,8 +46,6 @@ BODY
         +min-screen($mqWide)
             margin-left: 11.5rem
 
-
-
         &__level
 
             &._top
@@ -73,11 +71,12 @@ BODY
                 margin-left: 12.1rem
 
     &__link
-        &._active
-            color: $cBlueL
-
         &:hover
             color: $cGrey
+
+        &._active,
+        &._active:hover
+            color: $cBlueL
 
 .h-nav-sub
     position: relative
