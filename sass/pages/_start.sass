@@ -2,12 +2,18 @@
 
 
 .start-page
-
     .l-header
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
+        @extend %absHeader
+
+.start-table
+    &__layer
+        position: relative !important
+
+    &__image
+        width: 43rem
+        display: inline-block
+        vertical-align: top
+        transition: width $tLayout
 
 .start-split
     display: flex

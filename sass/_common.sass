@@ -94,13 +94,106 @@ A
             left: -.2rem
             +ps(plink-prod)
 
-.start-table
-    &__layer
-        position: relative !important
+.map-marker
+    position: absolute
+    z-index: 2
+
+    $root: &
+
+    &:hover
+        z-index: 3
+
+    &__balloon
+        bottom: 0
+        left: 0
+
+        width: 25rem
+        opacity: 0
+        visibility: hidden
+        transform: translateY(1rem)
+        transition: opacity $tEffect, visibility $tEffect, transform $tEffect
 
     &__image
-        width: 43rem
         display: inline-block
-        vertical-align: top
-        transition: width $tLayout
+        cursor: pointer
+        transition: opacity $tEffect
+
+    &._market
+
+        #{$root}__image
+            +s(market-pin)
+
+            &:hover
+                +s(market-pin-hover)
+
+        #{$root}__balloon
+            margin: 0 0 1.7rem -1.1rem
+
+    &._active
+        z-index: 5
+
+        #{$root}__image
+            opacity: 0
+
+        #{$root}__balloon
+            opacity: 1
+            visibility: visible
+            transform: translateY(0)
+
+.map-marker-balloon
+    position: absolute
+    z-index: 2
+    font-size: 1.4rem
+    background-color: #fff
+    padding: 1.1rem 2.5rem 0.7rem 1.2rem
+    border-radius: .2rem
+    box-shadow: 0 .2rem .5rem rgba(#394050, .25)
+    box-sizing: border-box
+
+    &:after
+        top: 100%
+        left: 2.2rem
+        +ps(marker-bubble-tip)
+
+    &__close
+        position: absolute
+        width: 1.3rem
+        height: 1.3rem
+        top: .7rem
+        right: .7rem
+        background-color: #b8c2c9
+        border: none
+        padding: 0
+        margin: 0
+        border-radius: 50%
+        cursor: pointer
+        transition: background $tEffect
+        
+        &:hover
+            background-color: $cBlueL
+
+        &:focus
+            outline: none
+
+        &:before
+            content: ''
+            position: absolute
+            top: -.7rem
+            bottom: -.7rem
+            right: -.7rem
+            left: -.7rem
+
+        &:after
+            top: .3rem
+            left: .3rem
+            +ps(marker-bubble-x)
+
+
+    &__title
+        font-family: $fMB
+        line-height: 2rem
+
+    &__content
+        line-height: 2rem
+
 

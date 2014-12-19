@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Искренне Ваш</title>
+
+    <meta name="viewport" content="width=1000">
+
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAsUlEQVQ4jc2SOw7CMBBEn0IPQUHK5/6HgAYaAhEghQbISaBIEQrGaLGQnQoxlTW7b+y1Df+oDKiBpfFWwFa1KNwCA3A0/kleGwopgZuBU1NL5Q3qKXy4CMDRkDGw09yM8w7ZybgAeQB2yoGrmDoBEhUeQD8ioAfuWk8AZkBjjlUGYHvRe2DqCn5I9QWugE49jZgP2ZDOC4nCThlwVuPB+O75gh/JaaFd1sbb8Jo5Cv9eTxJhO7PBA0g6AAAAAElFTkSuQmCC" rel="SHORTCUT ICON" type="image/ico" />
+    <!--<link href="../img/favicon.ico" rel="SHORTCUT ICON" type="image/ico" />-->
+    <!--<link href="../img/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" />-->
+    <!--<link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />-->
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.iskrennevash.com/">
+    <meta property="og:title" content="Искренне Ваш">
+
+    <link rel="stylesheet" href="../css/main.css" media="all">
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="../js/general/modernizr.min.js"></script>
+</head>
+<body class="market-page">
+    <div class="l-section">
+        <div class="l-header">
+            <div class="l-nrw">
+                <h1 class="h-logo">Искренне Ваш</h1>
+                <nav class="h-nav">
+                    <ul class="h-nav__level _top h-nav-top">
+                        <li class="h-nav-top__item"><a class="h-nav-top__link" href="#!">Продукция</a></li>
+                        <li class="h-nav-top__item"><a class="h-nav-top__link _active" href="#!">Где купить</a></li>
+                        <li class="h-nav-top__item"><a class="h-nav-top__link" href="#!">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="market-map js-fullheight js-market-map">
+
+            <div class="market-map__controls l-nrw">
+                <div class="market-map-zoom js-map-zoom">
+                    <button class="market-map-zoom__button js-map-zoom-button _in"></button>
+                    <button class="market-map-zoom__button js-map-zoom-button _out"></button>
+                </div>
+            </div>
+
+            <div class="market-map__object js-market-map-object" data-zoom-min="6" data-zoom-max="18"></div>
+
+            <script class="js-market-map-markertpl" type="text/x-template">
+                <div class="map-marker js-marker _market" data-coords="{{ coords }}">
+                    <div class="map-marker__balloon map-marker-balloon">
+                        <button class="map-marker-balloon__close js-marker-close" title="Закрыть"></button>
+
+                        <div class="map-marker-balloon__title">{{ title }}</div>
+                        <div class="map-marker-balloon__content">{{ content }}</div>
+                    </div>
+
+                    <i class="map-marker__image js-marker-image"></i>
+                </div>
+            </script>
+
+            <div class="market-map__also">
+                <div class="l-nrw">
+                    <div class="market-map__also__title">
+                        Также в сетевых <br />
+                        магазинах <em>Москвы</em>
+                    </div>
+
+                    <div class="market-map__also__list">
+                        <p>
+                            7 континент, Я любимый,  Атак,  Ашан,  Бахетле,  Виктория,  Дикси, Перекресток, Наш, Spar, Магнит, Универсал, Карусель
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="l-push"></div>
+    </div>
+
+    <div class="l-footer">
+        <div class="l-nrw">
+            <div class="f-copy">© «Дмитрогорский молочный завод», 2014</div>
+            <div class="f-madein madein">
+                <a class="madein__link" target="_blank" href="http://zero.ru/">Сделано в Zero</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.G = window.G || {};
+
+        window.G.market = {
+            'points': [{
+                'title': 'Фермерская лавка',
+                'content': 'ул. Большие Каменщики, д.2',
+                'coords': [55.738736, 37.652927999999974]
+            },{
+                'title': 'Фермерская лавка',
+                'content': 'ул. Гарибальди, д.7',
+                'coords': [55.6772838, 37.537268999999924]
+            },{
+                'title': 'Фермерская лавка',
+                'content': 'Мичуринский проспект д.16',
+                'coords': [55.7022584, 37.50384810000003]
+            },{
+                'title': 'Супермаркет «Перекресток-Экспресс»',
+                'content': 'Мичуринский проспект, д.3',
+                'coords': [55.7040145, 37.513530400000036]
+            },{
+                'title': 'Супермаркет «Перекресток-Экспресс»',
+                'content': 'МО, Одинцовский р-он, п. Рождественно, д.1',
+                'coords': [56.0258699, 35.518778399999974]
+            },{
+                'title': 'Супермаркет «Перекресток-Экспресс»',
+                'content': 'Москва, ул. Большая Садовая, д.5',
+                'coords': [55.768367, 37.593344]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, ул. Академика Челомея, д.3/2',
+                'coords': [55.659499, 37.527108999999996]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, р-н Жулебино, Лермонтовский проспект, д. 10/1',
+                'coords': [55.7049803, 37.84399559999997]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'МО, г. Домодедово, ул. 25 лет Октября, д.8',
+                'coords': [55.4264936, 37.76169649999997]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'МО, г. Щербинка, Симферопольское шоссе, д.8',
+                'coords': [55.4999998, 37.57125369999994]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'МО, п. Томилино, ул. Гаршина, д.11',
+                'coords': [55.6629277, 37.96476289999998]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, ул. Тихвинская, д.17/1',
+                'coords': [55.789381, 37.59959200000003]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, ул. Крылатские холмы, д.29',
+                'coords': [55.756644, 37.41752199999996]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'МО, п. Московский, ул. Московская, д.3а',
+                'coords': [55.5926226, 37.36680260000003]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, Дмитровское шоссе, д.80',
+                'coords': [55.8641076, 37.55130559999998]
+            },{
+                'title': 'Супермаркет «Я Любимый»',
+                'content': 'Москва, ул. Ленинская слобода, д.26/2',
+                'coords': [55.7101894, 37.65413760000001]
+            }]
+        };
+
+        Modernizr.load([
+            {
+                load: '../js/general/jquery-1.11.1.min.js'
+            },
+            {
+                load: [
+                    '../js/plugins.min.js',
+                    '../js/main.js'
+                ]
+            }
+        ])
+    </script>
+</body>
+</html>
