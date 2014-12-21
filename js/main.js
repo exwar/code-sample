@@ -162,12 +162,14 @@ $(function() {
                 'zoom': $('.js-map-zoom', $context)
             };
 
+
             var _marketPoints = window.G.market['points'] || [];
             var _markerTPL = el.markerTPL.html();
 
             var _map = null;
             var $markers = null;
             var _markerBounds = null;
+            var _mapInitPos = {  };
             var _closeZoom = 16;
 
             if (!Modernizr.flexbox) {
@@ -179,6 +181,11 @@ $(function() {
                 ieMapObject.data(el.mapObject.data());
 
                 el.mapObject = ieMapObject;
+            }
+
+            function backToInitPos() {
+                _map.panTo(_mapInitPos.center);
+                _map.setZoom(_mapInitPos.zoom);
             }
 
             function drawMarkers() {
@@ -201,33 +208,30 @@ $(function() {
                         enableEventPropagation: true
                     });
 
-                    _markerBounds.extend(_latLng);
+                    //_markerBounds.extend(_latLng);
                 });
 
-                _map.fitBounds(_markerBounds);
+                //_map.fitBounds(_markerBounds);
 
-                el.mapObject.on('click', '.js-marker-image', function() {
-                    var $that = $(this);
-                    var $relMarker = $that.closest('.js-marker');
-                    var coords = $relMarker.data('coords').split(';');
+                el.mapObject
+                    .on('click', '.js-marker-image', function() {
+                        var $that = $(this);
+                        var $relMarker = $that.closest('.js-marker');
+                        var coords = $relMarker.data('coords').split(';');
 
-                    var _markerLoc = new google.maps.LatLng(coords[0], coords[1]);
+                        var _markerLoc = new google.maps.LatLng(coords[0], coords[1]);
 
-                    // Hide others
-                    el.mapObject.find('.js-marker')
-                        .not($relMarker)
-                        .removeClass('_active');
+                        // Hide others
+                        el.mapObject.find('.js-marker')
+                            .not($relMarker)
+                            .removeClass('_active');
 
-                    // Center on marker
-                    _map.panTo(_markerLoc);
-                    _map.setZoom(_closeZoom);
+                        // Center on marker
+                        _map.panTo(_markerLoc);
+                        _map.setZoom(_closeZoom);
 
-                    // Check zoom
-                    el.zoom.trigger({
-                        'type': 'zoom:check',
-                        'zoom': _closeZoom
-                    });
-                });
+                    })
+                    .on('click', '.js-marker-close', backToInitPos);
             }
 
             function initZoom() {
@@ -235,8 +239,8 @@ $(function() {
                 var MINZOOM = ~~el.mapObject.data('zoomMin') || 6;
                 var MAXZOOM = ~~el.mapObject.data('zoomMax') || 18;
 
-                function checkZoom(event) {
-                    var _expZoom = event.zoom;
+                function checkZoom() {
+                    var _expZoom = _map.getZoom();
 
                     var $inButton = $buttons.filter('._in');
                     var $outButton = $buttons.filter('._out');
@@ -255,19 +259,22 @@ $(function() {
 
                     if (!$that.hasClass('_disabled')) {
                         _map.setZoom(_expZoom);
-
-                        el.zoom.trigger({
-                            'type': 'zoom:check',
-                            'zoom': _expZoom
-                        });
                     }
                 });
 
-                el.zoom.on('zoom:check', checkZoom);
+                google.maps.event.addListener(_map, "zoom_changed", checkZoom);
             }
 
             function initMarketMap() {
                 _map = el.mapObject.data('map');
+
+                _mapInitPos.center = _map.getCenter();
+                _mapInitPos.zoom = _map.getZoom();
+
+                setTimeout(function() {
+                    $(_map.getDiv()).find('> DIV').addClass('gm-map-holder');
+                }, 100);
+
 
                 drawMarkers();
                 initZoom();
@@ -283,10 +290,10 @@ $(function() {
                 });
             }
 
-            // Catch deferred
-
+            // Catch promise
             new MakeMap({
-                'el': el.mapObject
+                'el': el.mapObject,
+                'zoom': 9
             }).done(initMarketMap);
         });
     })();

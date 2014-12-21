@@ -469,7 +469,7 @@ A[href^=tel] {
   left: -0.2rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') 0 0 no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') 0 0 no-repeat;
   width: 9.3rem;
   height: 0.7rem;
 }
@@ -500,17 +500,17 @@ A[href^=tel] {
           transition: opacity 200ms;
 }
 .map-marker._market .map-marker__image {
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -29px -119px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -22px -119px no-repeat;
   width: 4rem;
   height: 3.9rem;
 }
 .map-marker._market .map-marker__image:hover {
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -69px -119px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -35px -15px no-repeat;
   width: 4rem;
   height: 3.9rem;
 }
 .map-marker._market .map-marker__balloon {
-  margin: 0 0 1.7rem -1.1rem;
+  margin: 0 0 1.7rem -1rem;
 }
 .map-marker._active {
   z-index: 5;
@@ -538,12 +538,12 @@ A[href^=tel] {
 }
 .map-marker-balloon:after {
   top: 100%;
-  left: 2.2rem;
+  left: 1.8rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -103px 0 no-repeat;
-  width: 1.2rem;
-  height: 1.4rem;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') 0 -119px no-repeat;
+  width: 2.2rem;
+  height: 1.9rem;
 }
 .map-marker-balloon__close {
   position: absolute;
@@ -579,7 +579,7 @@ A[href^=tel] {
   left: 0.3rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -14px -15px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -28px -15px no-repeat;
   width: 0.7rem;
   height: 0.7rem;
 }
@@ -588,7 +588,14 @@ A[href^=tel] {
   line-height: 2rem;
 }
 .map-marker-balloon__content {
+  font-family: "MyriadPro Regular", Arial, sans-serif;
   line-height: 2rem;
+}
+
+.gm-map-holder {
+  top: -3rem !important;
+  bottom: -3rem !important;
+  height: auto !important;
 }
 
 HTML {
@@ -630,7 +637,7 @@ BODY {
   display: inline-block;
   vertical-align: top;
   font-size: 0rem;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') 0 -158px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') 0 -158px no-repeat;
   width: 13.6rem;
   height: 12.1rem;
 }
@@ -695,7 +702,7 @@ BODY {
   left: 3.5rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -93px 0 no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -93px 0 no-repeat;
   width: 1rem;
   height: 1.1rem;
 }
@@ -903,6 +910,7 @@ BODY {
   -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+  overflow: hidden;
 }
 .no-flexbox .market-map__object {
   display: table-row;
@@ -939,7 +947,7 @@ BODY {
   }
 }
 .market-map__also__title EM {
-  color: #078bcd;
+  color: #0b9cdf;
 }
 .market-map__also__list {
   display: inline-block;
@@ -957,7 +965,7 @@ BODY {
 }
 
 .market-map-zoom {
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -21px -15px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -75px -15px no-repeat;
   width: 5.8rem;
   height: 10.4rem;
   text-align: center;
@@ -974,11 +982,14 @@ BODY {
   display: inline-block;
   cursor: pointer;
   background: none;
+  -webkit-transition: opacity 200ms;
+          transition: opacity 200ms;
 }
 .market-map-zoom__button:focus {
   outline: none;
 }
 .market-map-zoom__button._disabled {
+  opacity: 0.4;
   pointer-events: none;
 }
 .market-map-zoom__button._in {
@@ -989,14 +1000,14 @@ BODY {
   left: 1.9rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -115px 0 no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -103px 0 no-repeat;
   width: 1.5rem;
   height: 1.5rem;
 }
 .market-map-zoom__button._in:hover:after {
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') -14px -119px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -118px 0 no-repeat;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -1008,14 +1019,14 @@ BODY {
   left: 1.9rem;
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') 0 -119px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') 0 -15px no-repeat;
   width: 1.4rem;
   height: 0.3rem;
 }
 .market-map-zoom__button._out:hover:after {
   content: "";
   position: absolute;
-  background: url('../img/sprite-general-s9fe5ef2fdb.png') 0 -15px no-repeat;
+  background: url('../img/sprite-general-sc92c0cd1f1.png') -14px -15px no-repeat;
   width: 1.4rem;
   height: 0.3rem;
 }

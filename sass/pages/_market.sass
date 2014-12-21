@@ -46,6 +46,7 @@
 
     &__object
         flex: 1 0 auto
+        overflow: hidden
 
         .no-flexbox &
             display: table-row
@@ -77,7 +78,7 @@
                 width: 38rem
 
             EM
-                color: $cBlueL
+                color: #0b9cdf
 
         &__list
             +rs(1.4, middle)
@@ -105,12 +106,13 @@
         display: inline-block
         cursor: pointer
         background: none
-
+        transition: opacity $tEffect
 
         &:focus
             outline: none
 
         &._disabled
+            opacity: .4
             pointer-events: none
 
         &._in
