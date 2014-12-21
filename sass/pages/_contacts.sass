@@ -1,0 +1,211 @@
+// Start page
+
+
+.contacts-page
+    .l-header
+        @extend %absHeader
+        z-index: 10
+
+.contacts
+    opacity: 0
+    visibility: hidden
+    transition: opacity $tEffect, visibility $tEffect
+
+    &._ready
+        opacity: 1
+        visibility: visible
+
+    &._show-map
+        .contacts-map
+
+            &__close
+                opacity: 1
+
+        .contacts-info
+            opacity: 0
+            visibility: hidden
+
+
+.contacts-map
+    position: absolute
+    z-index: 2
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+
+    &:before
+        content: ''
+        position: absolute
+        z-index: 1
+        top: 0
+        left: 0
+        right: 0
+        height: 14rem
+        opacity: .8
+        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ViZTZkYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQyJSIgc3RvcC1jb2xvcj0iI2ViZTZkYiIgc3RvcC1vcGFjaXR5PSIwLjk5Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjU0JSIgc3RvcC1jb2xvcj0iI2ViZTZkYiIgc3RvcC1vcGFjaXR5PSIwLjgzIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg3JSIgc3RvcC1jb2xvcj0iI2ViZTZkYiIgc3RvcC1vcGFjaXR5PSIwLjE3Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk1JSIgc3RvcC1jb2xvcj0iI2ViZTZkYiIgc3RvcC1vcGFjaXR5PSIwLjA2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYmU2ZGIiIHN0b3Atb3BhY2l0eT0iMC4wMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+)
+        background: linear-gradient(to bottom, rgba(235, 230, 219, 1) 0%, rgba(235, 230, 219, 0.99) 42%, rgba(235, 230, 219, 0.83) 54%, rgba(235, 230, 219, 0.17) 87%, rgba(235, 230, 219, 0.06) 95%, rgba(235, 230, 219, 0.01) 100%)
+        pointer-events: none
+
+    &__close
+        position: absolute
+        z-index: 2
+        top: 14rem
+        left: 50%
+        width: 14rem
+        margin-left: -7rem
+        opacity: 0
+        transition: opacity $tEffect, transform $tEffect
+
+    &__object
+        width: 100%
+        height: 100%
+
+.contacts-map-close
+    $root: &
+    text-align: center
+    cursor: pointer
+
+    &__icon
+        display: block
+        position: relative
+        width: 5.4rem
+        height: 5.4rem
+        background: #474f61
+        transition: background $tEffect
+        margin: 0 auto 1.9rem
+        border: none
+        border-radius: 50%
+        @extend %ir
+
+        &:after
+            top: .6rem
+            left: .5rem
+            +ps(contacts-close)
+
+    &__title
+        font-size: 1.4rem
+        font-family: $fMBi
+        transition: color $tEffect
+
+    &:hover
+
+        #{$root}__icon
+            background-color: $cBlueL
+
+        #{$root}__title
+            color: $cGrey
+
+
+.contacts-info
+    position: relative
+    z-index: 3
+    height: 100%
+    text-align: center
+    background: rgba(#f7f9fb, .7)
+    @extend %sr
+    transition: opacity $tEffect, visibility $tEffect
+
+    &:before
+        content: ''
+        display: inline-block
+        vertical-align: middle
+        height: 100%
+
+    &__in
+        display: inline-block
+        vertical-align: middle
+
+    &__title
+        font-size: 5rem
+        line-height: 1
+        font-family: $fTT
+        margin-bottom: 2rem
+
+    &__showmap
+        margin: 4rem 0
+        transition: margin $tLayout
+
+        +min-screen-height($mqHMiddle)
+            margin: 5rem 0
+
+    &__address
+
+    &__phones
+        margin-top: 3.5rem
+        transition: margin $tLayout
+
+        +min-screen-height($mqHMiddle)
+            margin-top: 4.9rem
+
+
+        .contacts-phone + .contacts-phone
+            margin-left: 10rem
+
+
+.contacts-showmap
+    font-size: 1.4rem
+    padding-top: 4.5rem
+    position: relative
+    font-family: $fMBi
+    display: inline-block
+
+    &:before
+        top: 0
+        left: 50%
+        margin-left: -.8rem
+        +ps(contacts-marker)
+
+    &:hover
+        color: $cGrey
+
+.contacts-address
+    &__title
+        font-size: 1.4rem
+        font-family: $fMRi
+        margin-bottom: .7rem
+
+    &__loc
+        font-size: 1.6rem
+        line-height: 3rem
+
+    &__email
+        margin-top: 2.5rem
+        font-size: 1.4rem
+        transition: margin $tLayout
+
+        +min-screen-height($mqHMiddle)
+            margin-top: 3.1rem
+
+        > A
+            border-bottom: .1rem solid #dadada
+            transition: border $tEffect
+
+            &:hover
+                border-bottom-color: transparent
+
+.contacts-phone
+    +rs(1.8)
+    text-align: left
+    padding-left: 2.5rem
+
+    &__title
+        color: #808080
+        font-size: 1.2rem
+        font-family: $fMRi
+        margin-left: .1rem
+
+    &__tel
+        margin-top: .8rem
+        position: relative
+        display: block
+        font-family: $fMBs
+
+        &:before
+            bottom: .3rem
+            left: -2.5rem
+            +ps(contacts-phone)
+
+
+
+

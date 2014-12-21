@@ -3,7 +3,6 @@ $D = $(document);
 $H = $('html');
 $B = $('body');
 
-
 var MakeMap = function(options) {
     var settings = $.extend({}, this.defaults, options);
     var isModLoaded = new $.Deferred();
@@ -162,7 +161,6 @@ $(function() {
                 'zoom': $('.js-map-zoom', $context)
             };
 
-
             var _marketPoints = window.G.market['points'] || [];
             var _markerTPL = el.markerTPL.html();
 
@@ -275,18 +273,15 @@ $(function() {
                     $(_map.getDiv()).find('> DIV').addClass('gm-map-holder');
                 }, 100);
 
-
                 drawMarkers();
                 initZoom();
 
                 $W.on('resize', function() {
-                    var _curZoom = _map.getZoom();
                     var _curCenter = _map.getCenter();
 
                     google.maps.event.trigger(_map, 'resize');
 
-                    _map.setZoom(_curZoom);
-                    _map.setCenter(_curCenter);
+                    _map.panTo(_curCenter);
                 });
             }
 
@@ -297,5 +292,145 @@ $(function() {
             }).done(initMarketMap);
         });
     })();
+
+    // Contacts
+    (function() {
+        var target = $('.js-contacts');
+
+        target.each(function() {
+            var $context = $(this)
+              , el = {
+                    'mapObject': $('.js-contacts-map-object', $context),
+                    'mapClose': $('.js-contacts-map-close', $context),
+                    'markerTPL': $('.js-contacts-map-markertpl', $context),
+                    'infoShowMap': $('.js-contacts-info-show', $context)
+                };
+
+            var _contactsPoints = window.G.contacts['points'] || [];
+            var _markerTPL = el.markerTPL.html();
+
+            var _map = null;
+            var $markers = null;
+            var _markerBounds = null;
+            var _mapInitPos = {  };
+            var _closeZoom = 16;
+
+            function drawMarkers() {
+                _markerBounds = new google.maps.LatLngBounds();
+
+                $.each(_contactsPoints, function(prop, value) {
+                    var _markerContent = _markerTPL
+                        .replace('{{ title }}', value.title)
+                        .replace('{{ content }}', value.content)
+                        .replace('{{ coords }}', value.coords.join(';'));
+
+                    var _latLng = new google.maps.LatLng(value.coords[0], value.coords[1]);
+
+                    var _marker =  new RichMarker({
+                        map: _map,
+                        position: _latLng,
+                        draggable: false,
+                        flat: true,
+                        content: _markerContent,
+                        enableEventPropagation: true
+                    });
+
+                    _markerBounds.extend(_latLng);
+                });
+
+                el.mapObject
+                    .on('click', '.js-marker-close', function(event) {
+                        event.stopPropagation();
+
+                        hideMap();
+                    });
+            }
+
+            function offsetCenter(latlng,offsetx,offsety) {
+                var scale = Math.pow(2, _map.getZoom());
+                var nw = new google.maps.LatLng(
+                    _map.getBounds().getNorthEast().lat(),
+                    _map.getBounds().getSouthWest().lng()
+                );
+
+                var worldCoordinateCenter = _map.getProjection().fromLatLngToPoint(latlng);
+                var pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0)
+
+                var worldCoordinateNewCenter = new google.maps.Point(
+                    worldCoordinateCenter.x - pixelOffset.x,
+                    worldCoordinateCenter.y + pixelOffset.y
+                );
+
+                var newCenter = _map.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
+
+                _map.setCenter(newCenter);
+
+            }
+
+            function initContactsMap() {
+                _map = el.mapObject.data('map');
+
+                _mapInitPos.center = _map.getCenter();
+                _mapInitPos.zoom = _map.getZoom();
+
+                setTimeout(function() {
+                    //$(_map.getDiv()).find('> DIV').addClass('gm-map-holder');
+                }, 100);
+
+                drawMarkers();
+
+                $W.on('resize', function() {
+                    var _curCenter = _map.getCenter();
+
+                    google.maps.event.trigger(_map, 'resize');
+
+                    _map.panTo(_curCenter);
+                });
+            }
+
+            function showMap() {
+                $context.addClass('_show-map');
+
+                if (_map) {
+                    _map.fitBounds(_markerBounds);
+
+                    if (_map.getZoom() > 17) {
+                        _map.setZoom(17);
+                        offsetCenter(_map.getCenter(), parseInt($W.width() * 0.05), -parseInt($W.height() * 0.10));
+                    }
+                }
+            }
+
+            function hideMap() {
+                $context.removeClass('_show-map');
+
+                if (_map) {
+                    _map.panTo(_mapInitPos.center);
+                    _map.setZoom(_mapInitPos.zoom);
+                }
+            }
+
+            // Catch promise
+            new MakeMap({
+                'el': el.mapObject,
+                'zoom': 14
+            }).done(initContactsMap);
+
+            el.infoShowMap
+                .on('click', function(event) {
+                    event.preventDefault();
+
+                    showMap();
+                });
+
+            el.mapClose
+                .on('click', hideMap);
+
+            $D
+                .on('contacts:map:show', showMap)
+                .on('contacts:map:hide', hideMap);
+        });
+    })();
+
 
 });

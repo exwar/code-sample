@@ -17,6 +17,14 @@
     }
 
 @font-face {
+    font-family: 'MyriadPro Regular Italic';
+    src: font-url('myriadpro-it.woff2') format('woff2'),
+         font-url('myriadpro-it.woff') format('woff'),
+         font-url('myriadpro-it.ttf') format('truetype'),
+         font-url('myriadpro-it.svg#myriadpro-it') format('svg');
+    }
+
+@font-face {
     font-family: 'MyriadPro Bold';
     src: font-url('myriadpro-bold.woff2') format('woff2'),
          font-url('myriadpro-bold.woff') format('woff'),

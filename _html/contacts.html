@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Искренне Ваш</title>
+
+    <meta name="viewport" content="width=1000">
+
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAsUlEQVQ4jc2SOw7CMBBEn0IPQUHK5/6HgAYaAhEghQbISaBIEQrGaLGQnQoxlTW7b+y1Df+oDKiBpfFWwFa1KNwCA3A0/kleGwopgZuBU1NL5Q3qKXy4CMDRkDGw09yM8w7ZybgAeQB2yoGrmDoBEhUeQD8ioAfuWk8AZkBjjlUGYHvRe2DqCn5I9QWugE49jZgP2ZDOC4nCThlwVuPB+O75gh/JaaFd1sbb8Jo5Cv9eTxJhO7PBA0g6AAAAAElFTkSuQmCC" rel="SHORTCUT ICON" type="image/ico" />
+    <!--<link href="../img/favicon.ico" rel="SHORTCUT ICON" type="image/ico" />-->
+    <!--<link href="../img/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" />-->
+    <!--<link href="../img/apple-touch-icon.png" rel="apple-touch-icon" />-->
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.iskrennevash.com/">
+    <meta property="og:title" content="Искренне Ваш">
+
+    <link rel="stylesheet" href="../css/main.css" media="all">
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="../js/general/modernizr.min.js"></script>
+</head>
+<body class="contacts-page">
+    <div class="l-section">
+        <div class="l-header">
+            <div class="l-nrw">
+                <a href="./start.html" class="h-logo">Искренне Ваш</a>
+                <nav class="h-nav">
+                    <ul class="h-nav__level _top h-nav-top">
+                        <li class="h-nav-top__item"><a class="h-nav-top__link" href="#!">Продукция</a></li>
+                        <li class="h-nav-top__item"><a class="h-nav-top__link" href="./market.html">Где купить</a></li>
+                        <li class="h-nav-top__item"><a class="h-nav-top__link _active" href="./contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="contacts js-fullheight js-contacts">
+            <div class="contacts-map">
+                <div class="contacts-map__close contacts-map-close js-contacts-map-close" title="Закрыть">
+                    <div class="contacts-map-close__icon"></div>
+                    <div class="contacts-map-close__title">Закрыть карту</div>
+                </div>
+
+                <div class="contacts-map__object js-contacts-map-object"></div>
+
+                <script class="js-contacts-map-markertpl" type="text/x-template">
+                    <div class="map-marker js-marker _contacts _active" data-coords="{{ coords }}">
+                        <div class="map-marker__balloon map-marker-balloon">
+                            <button class="map-marker-balloon__close js-marker-close" title="Закрыть"></button>
+
+                            <div class="map-marker-balloon__title">{{ title }}</div>
+                            <div class="map-marker-balloon__content">{{ content }}</div>
+                        </div>
+                    </div>
+                </script>
+
+            </div>
+
+            <div class="contacts-info vcard">
+                <div class="contacts-info__in l-nrw">
+
+                    <h1 class="contacts-info__title">Контактная информация</h1>
+
+                    <div class="contacts-info__showmap">
+                        <a href="//www.google.ru/maps/place/пос.+Ржавки,+4,+Ржавки,+Московская+обл.,+141552/@56.0154719,37.219367,17z" target="_blank" class="contacts-showmap js-contacts-info-show">
+                            Как проехать
+                        </a>
+                    </div>
+
+                    <div class="contacts-info__address">
+                        <div class="contacts-address">
+                            <h2 class="contacts-address__title fn org">ООО ТД «Дмитрогорский продукт»</h2>
+
+                            <p class="contacts-address__loc adr">
+                                <span class="country-name">Россия</span>, <span class="postal-code">141552</span>, <span class="region">Солнечногорский р-н</span>, <span class="locality">р.п. Ржавки</span>, <br />
+                                <span class="street-address">микрорайон №2, ПСК стр. 4</span>
+                            </p>
+
+                            <p class="contacts-address__email">
+                                <a href="mailto:hello@iskrennevash.com" class="email">hello@iskrennevash.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contacts-info__phones">
+                        <div class="contacts-phone">
+                            <small class="contacts-phone__title">Горячая линия</small>
+                            <a class="contacts-phone__tel tel" href="tel:+74959446390">+7 (495) 944-63-90</a>
+                        </div>
+
+                        <div class="contacts-phone">
+                            <small class="contacts-phone__title">Заказ продукта</small>
+                            <a class="contacts-phone__tel tel" href="tel:+74959446760">+7 (495) 944-67-60</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="l-push"></div>
+    </div>
+
+    <div class="l-footer">
+        <div class="l-nrw">
+            <div class="f-copy">© «Дмитрогорский молочный завод», 2014</div>
+            <div class="f-madein madein">
+                <a class="madein__link" target="_blank" href="http://zero.ru/">Сделано в Zero</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.G = window.G || {};
+
+        window.G.contacts = {
+            'points': [{
+                'title': 'Дмитрогорский продукт',
+                'content': 'Солнечногорский р-н, р.п. Ржавки, микрорайон №2, ПСК стр. 4',
+                'coords': [56.0154719, 37.219367]
+            }]
+        };
+
+        Modernizr.load([
+            {
+                load: '../js/general/jquery-1.11.1.min.js'
+            },
+            {
+                load: [
+                    '../js/plugins.min.js',
+                    '../js/main.js'
+                ]
+            }
+        ])
+    </script>
+</body>
+</html>
