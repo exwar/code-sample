@@ -1127,7 +1127,7 @@ BODY {
 .contacts-map__controls .market-map-zoom {
   position: absolute;
   right: 0;
-  top: -10rem;
+  top: -11rem;
   -webkit-transition: top 200ms;
           transition: top 200ms;
 }
