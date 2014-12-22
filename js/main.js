@@ -116,7 +116,7 @@ $(function() {
             function setHeight() {
                 var _areaHeight = $W.height() - data.footerHeight;
 
-                if (_areaHeight < 620) _areaHeight = 620;
+                if (_areaHeight < 590) _areaHeight = 590;
                 $context.height((_areaHeight / 10) + 'rem');
 
                 if (!data.isReady) {
@@ -145,7 +145,7 @@ $(function() {
             }
         }
 
-        $D.on('click', '.js-marker-close, .js-marker-image', toggleMarker);
+        $D.on('click touchend', '.js-marker-close, .js-marker-image', toggleMarker);
     })();
 
     // Market
@@ -212,7 +212,7 @@ $(function() {
                 //_map.fitBounds(_markerBounds);
 
                 el.mapObject
-                    .on('click', '.js-marker-image', function() {
+                    .on('click touchend', '.js-marker-image', function() {
                         var $that = $(this);
                         var $relMarker = $that.closest('.js-marker');
                         var coords = $relMarker.data('coords').split(';');
@@ -229,7 +229,7 @@ $(function() {
                         _map.setZoom(_closeZoom);
 
                     })
-                    .on('click', '.js-marker-close', backToInitPos);
+                    .on('click touchend', '.js-marker-close', backToInitPos);
             }
 
             function initZoom() {
@@ -303,6 +303,7 @@ $(function() {
                     'mapObject': $('.js-contacts-map-object', $context),
                     'mapClose': $('.js-contacts-map-close', $context),
                     'markerTPL': $('.js-contacts-map-markertpl', $context),
+                    'mapControls': $('.js-contacts-map-controls', $context),
                     'infoShowMap': $('.js-contacts-info-show', $context)
                 };
 
@@ -367,6 +368,37 @@ $(function() {
 
             }
 
+            function initZoom() {
+                var $buttons = el.zoom.find('.js-map-zoom-button');
+                var MINZOOM = ~~el.mapObject.data('zoomMin') || 6;
+                var MAXZOOM = ~~el.mapObject.data('zoomMax') || 18;
+
+                function checkZoom() {
+                    var _expZoom = _map.getZoom();
+
+                    var $inButton = $buttons.filter('._in');
+                    var $outButton = $buttons.filter('._out');
+
+                    $buttons.removeClass('_disabled');
+
+                    if (_expZoom == MAXZOOM) $inButton.addClass('_disabled');
+                    if (_expZoom == MINZOOM) $outButton.addClass('_disabled');
+                }
+
+                $buttons.on('click', function() {
+                    var $that = $(this);
+                    var _dir = $that.hasClass('_out') ? -1 : 1;
+                    var _currentZoom = _map.getZoom();
+                    var _expZoom = _currentZoom + _dir;
+
+                    if (!$that.hasClass('_disabled')) {
+                        _map.setZoom(_expZoom);
+                    }
+                });
+
+                google.maps.event.addListener(_map, "zoom_changed", checkZoom);
+            }
+
             function initContactsMap() {
                 _map = el.mapObject.data('map');
 
@@ -374,8 +406,15 @@ $(function() {
                 _mapInitPos.zoom = _map.getZoom();
 
                 setTimeout(function() {
-                    //$(_map.getDiv()).find('> DIV').addClass('gm-map-holder');
+                    $(_map.getDiv()).find('> DIV').addClass('gm-map-holder');
                 }, 100);
+
+                if (el.mapControls.length) {
+                    $context.before(el.mapControls);
+                    el.zoom = el.mapControls.find('.js-map-zoom');
+
+                    initZoom();
+                }
 
                 drawMarkers();
 
@@ -390,19 +429,21 @@ $(function() {
 
             function showMap() {
                 $context.addClass('_show-map');
+                el.mapControls.addClass('_active');
 
                 if (_map) {
                     _map.fitBounds(_markerBounds);
 
-                    if (_map.getZoom() > 17) {
-                        _map.setZoom(17);
-                        offsetCenter(_map.getCenter(), parseInt($W.width() * 0.05), -parseInt($W.height() * 0.10));
+                    if (_map.getZoom() > 15) {
+                        _map.setZoom(15);
+                        offsetCenter(_map.getCenter(), -105, -100);
                     }
                 }
             }
 
             function hideMap() {
                 $context.removeClass('_show-map');
+                el.mapControls.removeClass('_active');
 
                 if (_map) {
                     _map.panTo(_mapInitPos.center);
