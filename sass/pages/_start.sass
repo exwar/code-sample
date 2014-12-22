@@ -2,9 +2,20 @@
 
 
 .start-page
-    overflow: hidden
     .l-header
         @extend %absHeader
+
+.start-bg
+    overflow: hidden
+
+    &__layer
+        position: absolute !important
+        z-index: 0
+        top: 0
+        right: -2.5rem !important
+        bottom: 0
+        left: -2.5rem !important
+        background: transparent no-repeat center/cover
 
 .start-table
     &__layer
