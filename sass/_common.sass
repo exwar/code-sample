@@ -6,9 +6,14 @@ BODY
     background-color: $cBG
     font-smoothing: antialiased
 
+    &:active,
+    ._mouse-focused:focus
+        outline: none
+
 ::selection
     background-color: $cBlueL
     color: #FFF
+
 
 A
     color: inherit
@@ -51,6 +56,8 @@ A
                 background: $cBlueD
 
 .desc-box
+    $root: &
+
     position: relative
     top: 0
     transition: top $tLayout
@@ -70,8 +77,40 @@ A
         font-size: 1.6rem
         line-height: 1.875
 
+        P
+            margin-top: 1rem
+
+        > P
+            &:first-child
+                margin-top: 0
+
     &__more
         margin-top: 3.2rem
+
+    &._collapsible
+        #{$root}__body
+            position: relative
+
+            &:after
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 0
+                right: 0
+                background: linear-gradient(to top, rgba(239, 243, 246, 1) 20%, rgba(239, 243, 246, 0) 100%)
+                height: 4rem
+                pointer-events: none
+                transition: opacity $tEffect
+
+
+        #{$root}__part
+            display: none
+
+        &._active
+            #{$root}__body
+                &:after
+                    opacity: 0
+
 
 .paint-link
     position: relative
@@ -95,6 +134,15 @@ A
             bottom: 0
             left: -.2rem
             +ps(plink-prod)
+
+    &._more
+        display: inline-block
+        padding-bottom: 1rem
+
+        &:after
+            bottom: 0
+            left: -.2rem
+            +ps(plink-more)
 
 .map-marker
     position: absolute
@@ -178,9 +226,6 @@ A
         
         &:hover
             background-color: $cBlueL
-
-        &:focus
-            outline: none
 
         &:before
             content: ''

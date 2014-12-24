@@ -80,6 +80,28 @@ $(function() {
         $W.on('resize', $.debounce(300, checkMQ));
     })();
 
+    // Detect mouse focus
+    (function() {
+        var mouseFocusedClass = '_mouse-focused';
+
+        $B.on('mousedown', function() {
+            //wait for `document.activeElement` to change
+            setTimeout(function() {
+                //find focused element
+                var activeElement = document.activeElement,
+                    $activeElement = $(activeElement);
+
+                //if found and it's not body...
+                if (activeElement && activeElement !== document.body) {
+                    //add special class, remove it after `blur`
+                    $activeElement.addClass(mouseFocusedClass).one('blur', function() {
+                        $activeElement.removeClass(mouseFocusedClass);
+                    });
+                }
+            }, 0);
+        });
+    })();
+
     // Start page
     (function() {
         var target = $('.start-page');
@@ -101,6 +123,34 @@ $(function() {
             });
         });
     })();
+
+    // Descbox
+    (function() {
+        var target = $('.js-descbox');
+
+        target.each(function() {
+            var $context = $(this)
+              , el = {
+                    'part': $('.js-descbox-part', $context),
+                    'more': $('.js-descbox-more', $context)
+                };
+
+            function toggleBody(event) {
+                var _oldText = el.more.text();
+
+                event.preventDefault();
+                el.part.slideToggle();
+                $context.toggleClass('_active');
+
+                el.more
+                    .text(el.more.data('alt'))
+                    .data('alt', _oldText);
+            }
+
+            el.more.on('click', toggleBody);
+        });
+    })();
+
 
     // Full height
     (function() {
@@ -472,6 +522,31 @@ $(function() {
                 .on('contacts:map:hide', hideMap);
         });
     })();
+
+    // Product caro
+    (function() {
+        var target = $('.js-product-caro');
+
+        target.each(function() {
+            var $context = $(this)
+              , el = {
+                    'arrows': $('.js-product-caro-arrow', $context),
+                    'list': $('.js-product-caro-list', $context)
+                };
+
+            el.list.bxSlider({
+                'minSlides': 1,
+                'maxSlides': 1,
+                'pager': false,
+                'slideMargin': 0,
+                'responsive': false,
+                'controls': false,
+                'prevSelector': el.arrows.filter('._prev'),
+                'nextSelector': el.arrows.filter('._next')
+            });
+        });
+    })();
+
 
 
 });

@@ -1,0 +1,88 @@
+// Product page
+
+.product-page
+
+.product
+
+    &__content
+        padding: 0 0 10rem 50%
+        margin: 3rem 0 0 8rem
+        width: 35rem
+        transition: width $tLayout, margin $tLayout
+
+        +min-screen-height($mqHMiddle)
+            margin: 14rem 0 0 10rem
+
+        +min-screen-height($mqHHigh)
+            margin: 16.5rem 0 0 12rem
+
+        +min-screen($mqMiddle)
+            width: 38rem
+
+        +min-screen($mqWide)
+            width: 41rem
+
+    &__table
+        position: fixed
+        bottom: 0
+
+        width: 44.2rem
+
+        +min-screen-wh($mqMiddle, $mqHMiddle)
+            width: 54.4rem
+
+        +min-screen-wh($mqWide, $mqHHigh)
+            width: 67.9rem
+            margin-left: -1.4rem
+
+.product-caro
+    position: relative
+
+    &__arrow
+        position: absolute
+        z-index: 10
+        top: 50%
+        margin: -2.7rem 0 0
+        width: 5.4rem
+        height: 5.4rem
+        background: #474f61
+        transition: background $tEffect
+        border: none
+        padding: 0
+        border-radius: 50%
+        cursor: pointer
+
+        &:hover
+            background-color: $cBlueL
+
+        &._prev
+            left: 1.3rem
+
+            &:after
+                top: .6rem
+                left: .5rem
+                +ps(arrow-prev)
+
+        &._next
+            right: 1.3rem
+
+            &:after
+                top: .6rem
+                left: .5rem
+                +ps(arrow-next)
+
+    .bx-wrapper
+        width: 27rem
+        margin: 0 auto
+        position: relative
+
+
+.product-table
+    background-color: tomato
+
+    &__caro
+        margin: 0 0 -6rem
+        background-color: slategray
+
+    &__base
+
