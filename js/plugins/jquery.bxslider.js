@@ -1,13 +1,3 @@
-/**
- * BxSlider v4.1.2 - Fully loaded, responsive content slider
- * http://bxslider.com
- *
- * Copyright 2014, Steven Wanderski - http://stevenwanderski.com - http://bxcreative.com
- * Written while drinking Belgian ales and listening to jazz
- *
- * Released under the MIT license - http://opensource.org/licenses/MIT
- */
-
 ;(function($){
 
 	var plugin = {};
@@ -636,19 +626,25 @@
 		 * Appends prev / next controls to the controls element
 		 */
 		var appendControls = function(){
-			slider.controls.next = $('<a class="bx-next" href="">' + slider.settings.nextText + '</a>');
-			slider.controls.prev = $('<a class="bx-prev" href="">' + slider.settings.prevText + '</a>');
+			/*
+			* @edit Replace holders for specified elements
+			* @author exwar
+			* */
+
 			// bind click actions to the controls
-			slider.controls.next.bind('click', clickNextBind);
-			slider.controls.prev.bind('click', clickPrevBind);
 			// if nextSlector was supplied, populate it
 			if(slider.settings.nextSelector){
-				$(slider.settings.nextSelector).append(slider.controls.next);
+				slider.controls.next = $(slider.settings.nextSelector);
 			}
 			// if prevSlector was supplied, populate it
 			if(slider.settings.prevSelector){
-				$(slider.settings.prevSelector).append(slider.controls.prev);
+				slider.controls.prev = $(slider.settings.prevSelector);
 			}
+
+			slider.controls.next.bind('click', clickNextBind);
+			slider.controls.prev.bind('click', clickPrevBind);
+
+
 			// if no custom selectors were supplied
 			if(!slider.settings.nextSelector && !slider.settings.prevSelector){
 				// add the controls to the DOM

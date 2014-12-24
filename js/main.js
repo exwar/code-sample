@@ -81,26 +81,26 @@ $(function() {
     })();
 
     // Detect mouse focus
-    (function() {
-        var mouseFocusedClass = '_mouse-focused';
-
-        $B.on('mousedown', function() {
-            //wait for `document.activeElement` to change
-            setTimeout(function() {
-                //find focused element
-                var activeElement = document.activeElement,
-                    $activeElement = $(activeElement);
-
-                //if found and it's not body...
-                if (activeElement && activeElement !== document.body) {
-                    //add special class, remove it after `blur`
-                    $activeElement.addClass(mouseFocusedClass).one('blur', function() {
-                        $activeElement.removeClass(mouseFocusedClass);
-                    });
-                }
-            }, 0);
-        });
-    })();
+    //(function() {
+    //    var mouseFocusedClass = '_mouse-focused';
+    //
+    //    $B.on('mousedown', function() {
+    //        //wait for `document.activeElement` to change
+    //        setTimeout(function() {
+    //            //find focused element
+    //            var activeElement = document.activeElement,
+    //                $activeElement = $(activeElement);
+    //
+    //            //if found and it's not body...
+    //            if (activeElement && activeElement !== document.body) {
+    //                //add special class, remove it after `blur`
+    //                $activeElement.addClass(mouseFocusedClass).one('blur', function() {
+    //                    $activeElement.removeClass(mouseFocusedClass);
+    //                });
+    //            }
+    //        }, 0);
+    //    });
+    //})();
 
     // Start page
     (function() {
@@ -523,27 +523,55 @@ $(function() {
         });
     })();
 
-    // Product caro
+    // Product table
     (function() {
-        var target = $('.js-product-caro');
+        var target = $('.js-product-table');
 
         target.each(function() {
             var $context = $(this)
               , el = {
                     'arrows': $('.js-product-caro-arrow', $context),
-                    'list': $('.js-product-caro-list', $context)
+                    'caro': $('.js-product-caro', $context),
+                    'list': $('.js-product-caro-list', $context),
+                    'listItems': $('.js-product-caro-list > LI', $context),
+                    'specs': $('.js-product-spec-item', $context)
                 };
 
-            el.list.bxSlider({
-                'minSlides': 1,
-                'maxSlides': 1,
-                'pager': false,
-                'slideMargin': 0,
-                'responsive': false,
-                'controls': false,
-                'prevSelector': el.arrows.filter('._prev'),
-                'nextSelector': el.arrows.filter('._next')
-            });
+            if (el.listItems.length > 1) {
+                el.caro.addClass('_multiple');
+
+                function cbItemBefore($slideElement) {
+                    var _slideIndex = $slideElement.data('item');
+                    var $relSpec = el.specs.filter('[data-spec="'+ _slideIndex +'"]');
+
+                    el.specs.removeClass('_active');
+
+                    if ($relSpec.length) {
+                        $relSpec.addClass('_active');
+                    }
+
+                }
+
+                function cbSliderLoad() {
+                    el.caro.addClass('_ready');
+                }
+
+                el.list.bxSlider({
+                    'mode': 'fade',
+                    'minSlides': 1,
+                    'maxSlides': 1,
+                    'pager': false,
+                    'slideMargin': 0,
+                    'responsive': true,
+                    'controls': true,
+                    'prevSelector': el.arrows.filter('._prev'),
+                    'nextSelector': el.arrows.filter('._next'),
+                    'onSlideBefore': cbItemBefore,
+                    'onSliderLoad': cbSliderLoad
+                });
+            } else {
+                el.caro.addClass('_single _ready');
+            }
         });
     })();
 

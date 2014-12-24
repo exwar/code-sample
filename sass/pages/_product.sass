@@ -1,8 +1,14 @@
 // Product page
 
 .product-page
+    .l-header
+        position: relative
+        z-index: 10
 
 .product
+    $root: &
+    position: relative
+    overflow: hidden
 
     &__content
         padding: 0 0 10rem 50%
@@ -24,18 +30,29 @@
 
     &__table
         position: fixed
-        bottom: 0
-
+        bottom: -6rem
+        transition: width $tLayout, bottom $tLayout
         width: 44.2rem
+
+        +max-screen-height($mqHLow + 1em)
+            transform: translate(0, 6rem)
+            position: absolute
 
         +min-screen-wh($mqMiddle, $mqHMiddle)
             width: 54.4rem
+            bottom: -9rem
 
         +min-screen-wh($mqWide, $mqHHigh)
             width: 67.9rem
             margin-left: -1.4rem
+            bottom: -11rem
+
+    &._small
+        #{$root}__table
+            bottom: 0
 
 .product-caro
+    $root: &
     position: relative
 
     &__arrow
@@ -46,16 +63,19 @@
         width: 5.4rem
         height: 5.4rem
         background: #474f61
-        transition: background $tEffect
         border: none
         padding: 0
         border-radius: 50%
         cursor: pointer
+        opacity: 0
+        visibility: hidden
+        transition: background $tEffect, opacity $tEffect $tLayout, visibility $tEffect $tLayout, transform $tEffect $tLayout
 
         &:hover
             background-color: $cBlueL
 
         &._prev
+            transform: translate(-1rem, 0)
             left: 1.3rem
 
             &:after
@@ -64,6 +84,7 @@
                 +ps(arrow-prev)
 
         &._next
+            transform: translate(1rem, 0)
             right: 1.3rem
 
             &:after
@@ -71,18 +92,142 @@
                 left: .5rem
                 +ps(arrow-next)
 
-    .bx-wrapper
+    &__list
+
+    &__item
+        text-align: center
+
+        > IMG
+            width: 100%
+            max-width: 41rem
+            vertical-align: top
+
+    &._single #{$root}__list,
+    &._multiple .bx-wrapper
         width: 27rem
         margin: 0 auto
         position: relative
 
+        +min-screen-wh($mqMiddle, $mqHMiddle)
+            width: 33.2rem
+
+        +min-screen-wh($mqWide, $mqHHigh)
+            width: 41rem
+
+    &._single
+
+
+    &._multiple
+
+        #{$root}__arrow
+            opacity: 1
+            visibility: visible
+            transform: translate(0, 0)
+
+    &._ready
+        opacity: 1
+        visibility: visible
+        transform: translate(0, 0)
+
+.product-spec
+
+    &__item
+        text-align: justify
+        text-justify: newspaper
+        width: 100%
+        float: left
+        margin-right: -100%
+        @extend %sr
+        opacity: 0
+        visibility: hidden
+        transition: opacity $tEffect, visibility $tEffect
+
+        &:after
+            content: ''
+            display: inline-block
+            width: 100%
+
+        &._active
+            opacity: 1
+            visibility: visible
+
+    &__col
+        +rs(1.4)
+        color: #4a362e
+        transition: padding $tLayout
+
+        &:nth-child(2)
+            position: relative
+            padding: 0 1rem 0 1.6rem
+
+
+            &:before,
+            &:after
+                top: 50%
+                margin-top: -2.2rem
+                +ps(prod-spec-line)
+
+            &:before
+                left: 0
+
+            &:after
+                right: 0
+
+            +min-screen-wh($mqMiddle, $mqHMiddle)
+                padding: 0 2.6rem 0 3rem
+
+            +min-screen-wh($mqWide, $mqHHigh)
+                padding: 0 3.3rem 0 3.5rem
+
+    &__dt
+        display: block
+        font-family: $fMBi
+
+    &__dd
+        display: block
+        margin-top: .6rem
+
 
 .product-table
-    background-color: tomato
 
     &__caro
-        margin: 0 0 -6rem
-        background-color: slategray
+        z-index: 3
+        margin: 0 0 -4.1rem
+        opacity: 0
+        visibility: hidden
+        transform: translate(0, -2rem)
+        transition: margin $tLayout, transform $tLayout, opacity $tLayout, visibility $tLayout
+
+        +min-screen-wh($mqMiddle, $mqHMiddle)
+            margin-bottom: -5.1rem
+
+        +min-screen-wh($mqWide, $mqHHigh)
+            margin-bottom: -6.3rem
+
+
+    &__spec
+        position: absolute
+        top: 24.7%
+        left: 17.8%
+        right: 20.1%
+        transition: top $tLayout, left $tLayout, right $tLayout,
+
+        +min-screen-wh($mqMiddle, $mqHMiddle)
+            top: 26%
+            left: 20%
+            right: 22%
+
+        +min-screen-wh($mqWide, $mqHHigh)
+            top: 27.2%
+            left: 22.8%
+            right: 25.4%
+
 
     &__base
+        position: relative
+        z-index: 2
+        width: 100%
+
+        IMG
+            width: 100%
 
