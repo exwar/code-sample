@@ -1659,3 +1659,8 @@ BODY {
 .product-table__base IMG {
   width: 100%;
 }
+.product-table._low .product-table__caro {
+  -webkit-transform: translate(0, 1.3rem);
+      -ms-transform: translate(0, 1.3rem);
+          transform: translate(0, 1.3rem);
+}

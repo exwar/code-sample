@@ -145,6 +145,8 @@
         visibility: visible
         transform: translate(0, 0)
 
+
+
 .product-spec
 
     &__item
@@ -205,6 +207,7 @@
 
 
 .product-table
+    $root: &
 
     &__caro
         z-index: 3
@@ -219,7 +222,6 @@
 
         +min-screen-wh($mqWide, $mqHHigh)
             margin-bottom: -6.3rem
-
 
     &__spec
         position: absolute
@@ -246,3 +248,7 @@
 
         IMG
             width: 100%
+
+    &._low
+        #{$root}__caro
+            transform: translate(0, 1.3rem)
