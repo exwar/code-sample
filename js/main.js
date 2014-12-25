@@ -139,7 +139,11 @@ $(function() {
                 var _oldText = el.more.text();
 
                 event.preventDefault();
-                el.part.slideToggle();
+                el.part.slideToggle(500, function() {
+                    $context.trigger({
+                        'type': 'descbox:toggle:end'
+                    });
+                });
                 $context.toggleClass('_active');
 
                 el.more
@@ -148,6 +152,53 @@ $(function() {
             }
 
             el.more.on('click', toggleBody);
+        });
+    })();
+
+    // Product
+    (function() {
+        var target = $('.js-product');
+
+        target.each(function() {
+            var $context = $(this),
+                el = {
+                    'descBox': $('.js-descbox', $context)
+                }
+              , data = {
+                    'footerHeight': $('.l-footer').outerHeight(),
+                    'headerHeight': $('.l-header').outerHeight(),
+                    'descBoxHeight': el.descBox.outerHeight(),
+                    'minArea': 0,
+                    'isReady': false
+                };
+
+            data.minArea = 610 - data.headerHeight;
+
+            function setHeight() {
+                var _areaHeight = $W.height() - (data.headerHeight + data.footerHeight);
+                var _descBoxMargin = 0;
+
+                if (_areaHeight < data.minArea) _areaHeight = data.minArea;
+                $context.css('minHeight', (_areaHeight / 10) + 'rem');
+
+                _descBoxMargin = Math.floor((_areaHeight - data.descBoxHeight) / 2);
+                if (_descBoxMargin < 20) _descBoxMargin = 20;
+
+                el.descBox.css({
+                   'margin': (_descBoxMargin / 10) + 'rem 0 2rem'
+                });
+
+                if (!data.isReady) {
+                    data.isReady = true;
+
+                    $context
+                        .addClass('_ready');
+                }
+            }
+
+            $W
+                .on('resize', setHeight)
+                .trigger('resize');
         });
     })();
 
@@ -553,7 +604,14 @@ $(function() {
                 }
 
                 function cbSliderLoad() {
-                    el.caro.addClass('_ready');
+                    if (Modernizr.touch) {
+                        el.caro
+                            .hide(0).show(0)
+                            .addClass('_ready');
+                    } else {
+                        el.caro
+                            .addClass('_ready');
+                    }
                 }
 
                 el.list.bxSlider({
@@ -570,7 +628,14 @@ $(function() {
                     'onSliderLoad': cbSliderLoad
                 });
             } else {
-                el.caro.addClass('_single _ready');
+                if (Modernizr.touch) {
+                    el.caro
+                        .hide(0).show(0)
+                        .addClass('_single _ready');
+                } else {
+                    el.caro
+                        .addClass('_single _ready');
+                }
             }
         });
     })();

@@ -462,7 +462,7 @@ A[href^=tel] {
   margin-top: 0;
 }
 .desc-box__more {
-  margin-top: 3.2rem;
+  padding-top: 3.2rem;
 }
 .desc-box._collapsible .desc-box__body {
   position: relative;
@@ -898,12 +898,12 @@ BODY {
 }
 @media screen and (min-width: 87.5em) and (min-height: 50em) {
   .start-split .start-table__image {
-    width: 54.4rem;
+    width: 58.7rem;
   }
 }
 @media screen and (min-width: 106.25em) and (min-height: 60em) {
   .start-split .start-table__image {
-    width: 65rem;
+    width: 73.4rem;
   }
 }
 .start-split .desc-box {
@@ -1367,52 +1367,43 @@ BODY {
   position: relative;
   z-index: 10;
 }
+.product-page .l-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .product {
   position: relative;
   overflow: hidden;
 }
 .product__content {
-  padding: 0 0 10rem 50%;
-  margin: 3rem 0 0 8rem;
+  padding: 0 0 0 50%;
+  margin: 0 0 0 8rem;
   width: 35rem;
   -webkit-transition: width 400ms, margin 400ms;
           transition: width 400ms, margin 400ms;
 }
-@media screen and (min-height: 50em) {
-  .product__content {
-    margin: 14rem 0 0 10rem;
-  }
-}
-@media screen and (min-height: 60em) {
-  .product__content {
-    margin: 16.5rem 0 0 12rem;
-  }
-}
 @media screen and (min-width: 87.5em) {
   .product__content {
+    margin: 0 0 0 10rem;
     width: 38rem;
   }
 }
 @media screen and (min-width: 106.25em) {
   .product__content {
+    margin: 0 0 0 12rem;
     width: 41rem;
   }
 }
 .product__table {
   position: fixed;
-  bottom: -6rem;
+  bottom: -7rem;
+  margin-left: -0.7rem;
   -webkit-transition: width 400ms, bottom 400ms;
           transition: width 400ms, bottom 400ms;
   width: 44.2rem;
-}
-@media screen and (max-height: 41em) {
-  .product__table {
-    -webkit-transform: translate(0, 6rem);
-        -ms-transform: translate(0, 6rem);
-            transform: translate(0, 6rem);
-    position: absolute;
-  }
 }
 @media screen and (min-width: 87.5em) and (min-height: 50em) {
   .product__table {
@@ -1429,6 +1420,17 @@ BODY {
 }
 .product._small .product__table {
   bottom: 0;
+}
+.product._nailed .product__table {
+  position: absolute;
+  -webkit-transform: translate(0, 6rem);
+      -ms-transform: translate(0, 6rem);
+          transform: translate(0, 6rem);
+}
+.product._nailed._small {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 .product-caro {

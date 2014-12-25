@@ -5,38 +5,41 @@
         position: relative
         z-index: 10
 
+    .l-footer
+        position: fixed
+        bottom: 0
+        left: 0
+        right: 0
+
 .product
     $root: &
     position: relative
     overflow: hidden
 
     &__content
-        padding: 0 0 10rem 50%
-        margin: 3rem 0 0 8rem
+        padding: 0 0 0 50%
+        margin: 0 0 0 8rem
         width: 35rem
         transition: width $tLayout, margin $tLayout
 
-        +min-screen-height($mqHMiddle)
-            margin: 14rem 0 0 10rem
-
-        +min-screen-height($mqHHigh)
-            margin: 16.5rem 0 0 12rem
-
         +min-screen($mqMiddle)
+            margin: 0 0 0 10rem
             width: 38rem
 
         +min-screen($mqWide)
+            margin: 0 0 0 12rem
             width: 41rem
+
+        .desc-box
+            
+
 
     &__table
         position: fixed
-        bottom: -6rem
+        bottom: -7rem
+        margin-left: -0.7rem
         transition: width $tLayout, bottom $tLayout
         width: 44.2rem
-
-        +max-screen-height($mqHLow + 1em)
-            transform: translate(0, 6rem)
-            position: absolute
 
         +min-screen-wh($mqMiddle, $mqHMiddle)
             width: 54.4rem
@@ -50,6 +53,16 @@
     &._small
         #{$root}__table
             bottom: 0
+
+    &._nailed
+        #{$root}__table
+            position: absolute
+            transform: translate(0, 6rem)
+
+        &._small
+            transform: translate(0, 0)
+
+
 
 .product-caro
     $root: &
@@ -230,4 +243,3 @@
 
         IMG
             width: 100%
-
