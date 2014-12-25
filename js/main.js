@@ -22,7 +22,7 @@ var MakeMap = function(options) {
 
             settings.el.data('map', mapInstance);
             isModLoaded.resolve();
-        });
+        }); 
 
     return isModLoaded;
 };

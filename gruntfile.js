@@ -79,7 +79,7 @@ module.exports = function(grunt){
             main: {
                 options: {
                     banner: '<%= meta.banner %>',
-                    beautify: true
+                    beautify: false
                 },
                 files: {
                     'js/main.min.js': ['js/main.js']
@@ -281,7 +281,7 @@ module.exports = function(grunt){
 
     grunt.registerTask('mdzr', ['modernizr']);
 
-    grunt.registerTask('buildcss',  ['compass', 'autoprefixer']); //, 'csso'
+    grunt.registerTask('buildcss',  ['compass', 'autoprefixer', 'css_mqpacker', 'csso'])
 
     grunt.registerTask('buildJpg',  ['newer:imagemin:jpg']);
     grunt.registerTask('buildPng',  ['newer:imagemin:png']);
@@ -289,6 +289,6 @@ module.exports = function(grunt){
     grunt.registerTask('buildImg',  ['buildJpg', 'buildPng', 'buildGif']);
 
     grunt.registerTask('buildJsPlugins',  ['concat:plugins', 'uglify:plugins']);
-    grunt.registerTask('buildJsMain', ['uglify:main']); //,
+    grunt.registerTask('buildJsMain', ['uglify:main']);
     grunt.registerTask('buildjs',  ['buildJsPlugins', 'buildJsMain']);
 };
