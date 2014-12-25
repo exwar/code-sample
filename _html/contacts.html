@@ -32,11 +32,14 @@
         </div>
 
         <div class="contacts js-fullheight js-contacts">
-            <div class="contacts-map">
-                <div class="contacts-map__close contacts-map-close js-contacts-map-close" title="Закрыть">
-                    <div class="contacts-map-close__icon"></div>
-                    <div class="contacts-map-close__title">Закрыть карту</div>
-                </div>
+            <div class="contacts-map js-contacts-map">
+
+                <!-- Раскомментить, если понадобится крестик
+                    <div class="contacts-map__close contacts-map-close js-contacts-map-close" title="Закрыть">
+                        <div class="contacts-map-close__icon"></div>
+                        <div class="contacts-map-close__title">Закрыть карту</div>
+                    </div>
+                -->
 
                 <div class="contacts-map__controls js-contacts-map-controls l-nrw">
                     <div class="market-map-zoom js-map-zoom">
@@ -45,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="contacts-map__object js-contacts-map-object" data-zoom-min="6" data-zoom-max="18"></div>
+                <div class="contacts-map__object js-contacts-map-object" data-zoom-min="8" data-zoom-max="18"></div>
 
                 <script class="js-contacts-map-markertpl" type="text/x-template">
                     <div class="map-marker js-marker _contacts _active" data-coords="{{ coords }}">

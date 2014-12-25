@@ -335,8 +335,10 @@ $(function() {
 
             function initZoom() {
                 var $buttons = el.zoom.find('.js-map-zoom-button');
-                var MINZOOM = ~~el.mapObject.data('zoomMin') || 6;
+                var MINZOOM = ~~el.mapObject.data('zoomMin') || 8;
                 var MAXZOOM = ~~el.mapObject.data('zoomMax') || 18;
+
+                var _farZoom = [MINZOOM, MINZOOM + 1, MINZOOM + 2];
 
                 function checkZoom() {
                     var _expZoom = _map.getZoom();
@@ -348,6 +350,8 @@ $(function() {
 
                     if (_expZoom == MAXZOOM) $inButton.addClass('_disabled');
                     if (_expZoom == MINZOOM) $outButton.addClass('_disabled');
+
+                    $context.toggleClass('_far-zoom', _farZoom.indexOf(_expZoom) > -1);
                 }
 
                 $buttons.on('click', function() {
@@ -361,6 +365,7 @@ $(function() {
                     }
                 });
 
+                checkZoom();
                 google.maps.event.addListener(_map, "zoom_changed", checkZoom);
             }
 
@@ -401,6 +406,7 @@ $(function() {
         target.each(function() {
             var $context = $(this)
               , el = {
+                    'map': $('.js-contacts-map', $context),
                     'mapObject': $('.js-contacts-map-object', $context),
                     'mapClose': $('.js-contacts-map-close', $context),
                     'markerTPL': $('.js-contacts-map-markertpl', $context),
@@ -441,7 +447,7 @@ $(function() {
                 });
 
                 el.mapObject
-                    .on('click', '.js-marker-close', function(event) {
+                    .on('click touchend', '.js-marker-close', function(event) {
                         event.stopPropagation();
 
                         hideMap();
@@ -471,11 +477,15 @@ $(function() {
 
             function initZoom() {
                 var $buttons = el.zoom.find('.js-map-zoom-button');
-                var MINZOOM = ~~el.mapObject.data('zoomMin') || 6;
+                var MINZOOM = ~~el.mapObject.data('zoomMin') || 8;
                 var MAXZOOM = ~~el.mapObject.data('zoomMax') || 18;
+
+                var _farZoom = [MINZOOM , MINZOOM + 1, MINZOOM + 2];
 
                 function checkZoom() {
                     var _expZoom = _map.getZoom();
+
+                    console.info(_expZoom);
 
                     var $inButton = $buttons.filter('._in');
                     var $outButton = $buttons.filter('._out');
@@ -484,6 +494,8 @@ $(function() {
 
                     if (_expZoom == MAXZOOM) $inButton.addClass('_disabled');
                     if (_expZoom == MINZOOM) $outButton.addClass('_disabled');
+
+                    el.map.toggleClass('_far-zoom', _farZoom.indexOf(_expZoom) > -1);
                 }
 
                 $buttons.on('click', function() {
@@ -497,6 +509,7 @@ $(function() {
                     }
                 });
 
+                checkZoom();
                 google.maps.event.addListener(_map, "zoom_changed", checkZoom);
             }
 
@@ -639,7 +652,6 @@ $(function() {
             }
         });
     })();
-
 
 
 });
