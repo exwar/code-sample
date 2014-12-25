@@ -266,11 +266,11 @@ module.exports = function(grunt){
                 },
                 options: {
                     watchTask: true,
-                    startPath: '_html/start.html',
+                    startPath: '_html/index.html',
                     open: 'external',
                     server: {
                         baseDir: ".",
-                        index: "start.html"
+                        index: "index.html"
                     }
                 }
             }
