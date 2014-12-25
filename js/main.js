@@ -179,14 +179,14 @@ $(function() {
                 var _descBoxMargin = 0;
 
                 if (_areaHeight < data.minArea) _areaHeight = data.minArea;
-                $context.css('minHeight', (_areaHeight / 10) + 'rem');
+                $context.css('height', (_areaHeight / 10) + 'rem');
 
                 _descBoxMargin = Math.floor((_areaHeight - data.descBoxHeight) / 2);
                 if (_descBoxMargin < 20) _descBoxMargin = 20;
 
-                el.descBox.css({
-                   'margin': (_descBoxMargin / 10) + 'rem 0 2rem'
-                });
+                // el.descBox.css({
+                //    'margin': (_descBoxMargin / 10) + 'rem 0 2rem'
+                // });
 
                 if (!data.isReady) {
                     data.isReady = true;
