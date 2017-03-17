@@ -4,26 +4,24 @@
   "author": "Stanislav Nekrasov",
   "email": "to@exwar.com",
   "private": true,
-
+  "scripts": {
+    "start": "grunt",
+    "build": "grunt build"
+  },
   "devDependencies": {
-    "grunt":                        "~0.4.1",
-    "matchdep":                     "*",
-
-    "grunt-htmlhint":               "*",
-
-    "grunt-contrib-compass":        "*",
-    "grunt-autoprefixer":           "*",
-    "grunt-modernizr":              "*",
-    "grunt-css-mqpacker":           "*",
-    "grunt-csso":                   "*",
-
-    "grunt-contrib-imagemin":       "*",
-
-    "grunt-contrib-concat":         "*",
-    "grunt-contrib-uglify":         "*",
-
-    "grunt-newer":                  "*",
-    "grunt-contrib-watch":          "*",
-    "grunt-browser-sync":           "*"
+    "grunt": 			"1.0.1",
+    "grunt-autoprefixer": 	"*",
+    "grunt-browser-sync": 	"*",
+    "grunt-contrib-compass": 	"*",
+    "grunt-contrib-concat": 	"*",
+    "grunt-contrib-imagemin": 	"*",
+    "grunt-contrib-uglify": 	"*",
+    "grunt-contrib-watch": 	"*",
+    "grunt-css-mqpacker": 	"*",
+    "grunt-csso": 		"*",
+    "grunt-htmlhint": 		"*",
+    "grunt-modernizr":		"*",
+    "grunt-newer": 		"*",
+    "matchdep": 		"*"
   }
 }
